@@ -14,6 +14,7 @@ header{
     background: #168bd8;
     position: fixed;
     left: 0;top:0;
+    z-index: 9999;
 }
 
 .header a{
@@ -34,16 +35,97 @@ header{
 }
 .header .index{
   align-self: center;
-    margin-top: 20px;
 }
 .header .last{
     align-self: flex-end;
     font-size: 12px;
-    margin-bottom: 5px;
 }
 .header a:nth-of-type(5){
-    margin-left: 100px;
+    margin-left: 0;
 }
+.max{
+    display: none;
+}
+.min{
+    position: relative;
+}
+.min .menuOption{
+    width: 40px;height: 40px;
+    position: relative;
+    /*border: 1px solid red;*/
+    margin-top: 10px;
+    z-index: 9999;
+}
+/*.min .menuOption:before{
+    content:"";
+    width: 20px;height: 2px;
+    position: absolute;
+    top:15px;left:0;
+    background: #fff;
+    transition: 2s;
+}
+.min .menuOption:after{
+    content:"";
+    width: 20px;height: 2px;
+    position: absolute;
+    top:25px;left:0;
+    background: #fff;
+}*/
+.min .menuOption .menuOption-tline{
+    width: 20px;height: 2px;
+    position: absolute;
+    top:15px;left:0;
+    background: #fff;
+    cursor: pointer;
+}
+.min .menuOption .menuOption-bline{
+    width: 20px;height: 2px;
+    position: absolute;
+    top:25px;left:0;
+    background: #fff;
+    cursor: pointer;
+}
+
+.min .screen{
+    position: absolute;
+    top:0;left:0;
+    width:100%;height:100%;
+    transform-style: preserve-3d;
+}
+.min .screen .menu{
+    position: absolute;
+    top:60px;left:0;
+    width:100%;height: 100%;
+}
+.min .menu a{
+    /*display: block;*/
+    width: 100%;height:100%;
+    text-align: center;
+    line-height: 40px;
+    background: rgba(0,0,0,0.7);
+    transform-origin: top;
+    opacity: 0;
+}
+
+@keyframes menu{
+    0%{
+        opacity:0;
+        transform:rotateX(90deg);
+    }
+    100%{
+        opacity:1;
+        transform:rotateX(0deg);
+    }
+}
+@keyframes menu1{
+    0%{
+        opacity:1;transform:rotateX(0deg);
+    }
+    100%{
+        opacity:0;transform:rotateX(90deg);
+    }
+}
+
 #fullpage{
     width: 100%;
     height: 100%;
@@ -52,78 +134,409 @@ header{
 section{
     width: 100%;
     height: 100%;
+    position: relative;
 }
 section:nth-child(1){
-    background: url("../img/bg-0.jpg") no-repeat;
+    background: url("../img/bg-0.jpg") repeat;
 }
 section:nth-child(2){
-    background: url("../img/bg-1.jpg") no-repeat;
+    background: url("../img/bg-1.jpg")repeat;
 }
 section:nth-child(3){
-    background: url("../img/bg-2.jpg") no-repeat;
+    background: url("../img/bg-2.jpg") repeat;
 }
 section:nth-child(4){
-    background: url("../img/bg-3.jpg") no-repeat;
+    background: url("../img/bg-3.jpg") repeat;
 }
+
+
 /*内容*/
+.login{
+    width: 350px;
+    height: 300px;
+    background: #4CBFFA;
+}
 .s0-top{
     width: 100%;
     height: 100%;
     background: url("../img/cloud.png") repeat-x;
-    animation: one 20s linear 0s infinite normal;
+    animation: one 280s linear infinite;
     position: absolute;
-    /*overflow: hidden;*/
+    overflow: hidden;
 }
 @keyframes one {
-
-    0%{
-        left:0
+    0% {
+        background-position: 2000px 0;
     }
-    20%{
-        left:-20%
+    50% {
+        background-position: 0 0;
     }
-    50%{
-        right:100%;
-    }
-    60%{
-        right:80%;
-    }
-    70%{
-        right:60%;
-    }
-    80%{
-        right:50%;
-    }
-    90%{
-        right:40%;
-    }
-    100%{
-        left:-100%;
+    100% {
+        background-position: -2000px 0;
     }
 }
 .s0-top1{
     width: 100%;
     height: 100%;
-    background: url("../img/cloud_3.png") no-repeat;
-    animation: two 30s linear 0s infinite normal;
+    background: url("../img/cloud_3.png")  repeat-x;
+    animation: one 280s linear infinite;
     position: absolute;
     overflow: hidden;
 }
-@keyframes two {
+/*大海 轮船*/
+.s0-bottom{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 126px;
+    background: url("../img/bg-1.jpg") repeat;
+}
+.s0-center{
+    width: 1000px;
+    margin: 0 auto;
+    position: relative;
+}
+.hill1{
+    width: 265px;
+    height: 175px;
+    background: url("../img/hill.png") no-repeat;
+    position: absolute;
+    left: -182px;
+    top: -50px;
+    z-index: 9990;
+}
+.hill2{
+    width: 63px;
+    height: 78px;
+    background: url("../img/hill_2.png") no-repeat;
+    position: absolute;
+    right: 288px;
+    top: -13px;
+    z-index: 9990;
+}
+.hill3{
+    width: 260px;
+    height: 175px;
+    background: url("../img/hill_3.png") no-repeat;
+    position: absolute;
+    right: -129px;
+    top: -47px;
+    z-index: 9990;
+}
+.ship{
+    width: 242px;
+    height: 228px;
+    background: url("../img/ship_1.png") no-repeat;
+    position: absolute;
+    left: 100px;
+    top: -191px;
+}
+/*@keyframes chuan {
+    0% {
+       translate(-30px,0)
+    }
+    100% {
+       translate(0px,0)
+    }
+}*/
+.s0-bottom1{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+}
+.s0-bottom2{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 126px;
+    background: url("../img/bg-3-head.png") repeat;
+}
+.s0-bottom3{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+}
+.jian{
+    display: block;
+    width: 30px;
+    height: 26px;
+    background: url("../img/jiantou.png") no-repeat;
+    position: absolute;
+    left: 485px;
+    animation: arrowGo 1s infinite steps(10,end)
+}
+@keyframes  arrowGo {
+    0% {
+        opacity: 1;
+        transform-origin: center center;
+        transform: translate(-50%,0);
+        bottom: 42px;
+    }
+    50% {
+        opacity: .5;
+        transform-origin: center center;
+        transform: translate(-50%,0);
+        bottom: 36px;
+    }
+    100% {
+        opacity: 1;
+        transform-origin: center center;
+        transform: translate(-50%,0);
+        bottom: 42px;
+    }
+}
+/*第一屏中间*/
+/*.lauch{
+    width: 501px;
+    height: 158px;
+    background: url("../img/launch_1.png")no-repeat;
+    position: absolute;
+    left: 0;
+    top: 110px;
+}
+.fly{
+    width: 119px;
+    height: 78px;
+    background: url("../img/flight.png")no-repeat;
+    position: absolute;
+    left: 295px;
+    animation: flight 3s infinite;
+}*/
+@keyframes flight {
+    0% {
+        top: 90px;
+    }
+    40% {
+        top: 110px;
+    }
+    100% {
+        top:90px;
+    }
+}
 
-    0%{
-        left:0
+.second img{
+    animation: rotate 2s linear infinite;
+}
+@keyframes rotate {
+    0% {
+        transform:rotateY(0deg)
     }
-    20%{
-        left:-20%
+    100% {
+        transform:rotateY(360deg)
     }
-    50%{
-        right:100%;
+}
+.s0-center .square6{
+    background: #35b568;
+    left: 70px;
+    bottom:-88px;
+    width: 44px;
+    height: 44px;
+}
+.s0-center .square7{
+    background: #4ac179;
+    left: 158px;
+}
+.s0-center .square8{
+    background: #8ae75a;
+    left: 246px;
+    width: 44px;
+    height: 44px;
+    bottom:-88px;
+}
+.s0-center .square9{
+    background: #8ae75a;
+    right: 328px;
+    width: 44px;
+    height: 44px;
+    bottom:-88px;
+}
+.s0-center .square10{
+    background: #4ac179;
+    right: 240px;
+    width: 44px;
+    height: 44px;
+    bottom:-88px;
+}
+.square11{
+    position: absolute;
+    display: block;
+    width: 88px;
+    height: 88px;
+}
+.aa .left-img img {
+    position: absolute;
+    top:40%;
+    z-index: 999;
+}
+.aa .second{
+    /*text-align: center;*/
+}
+.aa .left-img img{
+    margin-left: -50px;
+    opacity:0;
+    transition: margin 1s ease,opacity 1s ease;
+}
+.aa .right-img img{
+    margin-right: -50px;
+    opacity:0;
+    transition: margin 1s ease,opacity 1s ease;
+}
+.text {
+    margin-left: -50px;
+    opacity:0;
+    transition: margin 1s ease,opacity 1s ease;
+}
+.center{
+    margin-left: -50px;
+    opacity:0;
+    transition: margin 1s ease,opacity 1s ease;
+}
+.bb .left-img img{
+    opacity: 1;
+}
+.bb .right-img img{
+    opacity: 1;
+    margin: auto;
+}
+
+.first-img{
+    height: 100%;
+}
+.first-img .row{
+    height: 100%;
+}
+.left-img {
+    height: 100%;
+}
+.right-img {
+    height: 100%;
+}
+.center{
+    width: 500px;
+    height: 100%;
+    margin: 0 auto;
+    padding-left:200px;
+}
+.center3{
+    background:url("../img/bubble.png")no-repeat;
+    background-position: 36px 100px;
+}
+.text {
+    left:40%;top:32%;position: absolute;
+    z-index: 999;
+}
+.shuju1{
+    text-align: left;
+    font-size: 34px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    line-height: 48px;
+    margin-bottom: 6px;
+    color:#fff;
+    width: 300px;
+}
+.shuju2{
+    text-align: left;
+    font-size: 19px;
+    letter-spacing: 1px;
+    line-height: 32px;
+    opacity: .8;
+    color:#fff;
+    width: 300px;
+}
+.square{
+    position: absolute;
+    display: block;
+    width: 88px;
+    height: 88px;
+}
+.square1{
+    background: #33bb9a;
+    left: 70px;
+    top: 60px;
+}
+.square2{
+    background: #29a2b8;
+    left: -18px;
+    top: 148px;
+}
+.square3{
+    background: #60cf6e;
+    left: 158px;
+    top: 148px;
+}
+.square4{
+    background: #8ae75a;
+    left: 70px;
+    top: 236px;
+    width: 176px;
+    height: 176px;
+    background-image: url("../img/square.jpg");
+}
+.square5{
+    background: #33bb9a;
+    left: 246px;
+    top: 236px;
+}
+@media screen and (max-width: 1000px){
+    .right-img img{
+        position: absolute;
+        top:0;right:0;bottom:0;left:0;
+        margin:auto;
     }
-    80%{
-        right:80%;
+    .right-img .login{
+        position: absolute;
+        top:0;right:0;bottom:0;left:0;
+        margin:auto;
     }
-    100%{
-        left:-100%
+}
+
+
+@media screen and (min-width: 1000px){
+    .max{
+        display: flex;
+    }
+    .min{
+        display: none;
+    }
+    .header a:nth-of-type(5){
+        margin-left: 100px;
+    }
+    .header .index{
+        align-self: center;
+        margin-top: 20px;
+    }
+    .header .last{
+        align-self: flex-end;
+        font-size: 12px;
+        margin-bottom: 5px;
+    }
+    .right-img img{
+        position: absolute;
+        top:20%;right:0;
+        margin: auto;
+    }
+    .right-img .login{
+        position: absolute;
+        top:20%;right:0;
+        margin: auto;
+    }
+    .left-img img:nth-child(1){
+        left:0;top:25%;position: absolute;
+    }
+    .text {
+        left:20%; top:20%;position: absolute;
+    }
+
+    .left-img img:nth-child(2){
+        left:60%;top:20%;position: absolute;
+        animation: flight 3s infinite;
+    }
+    .square{
+        margin-left: -200px;
     }
 }
